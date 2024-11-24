@@ -13,11 +13,6 @@ const likeButtonElement = document.querySelector("#like-button")
 console.log(likeButtonElement)
 
 
-// events
-//                                 (event,)
-likeButtonElement.addEventListener("click",()=>{
-    console.log("Button clicked")
-})
 
 
 const commentButtonElement = document.querySelector("#comment-button")
@@ -25,21 +20,39 @@ const commentButtonElement = document.querySelector("#comment-button")
 console.log(commentButtonElement)
 
 commentButtonElement.addEventListener("click",()=>{
-    // 1. create new commentelement
+    // 1. create new commentelement <li>
     const commentElement = document.createElement("li")
 
+    // 2. get the ul to put the li inside of
     const ulElement = document.querySelector("#comment-ul")
 
+    // 3. get the input element to get the text
     const inputElement = document.querySelector("#comment-input")
 
 
-    // 2. add text content to li
+    // 4. adding the value of the input as the content in the li
     commentElement.textContent = inputElement.value
 
 
+    // 5. put <li> inside of <ul>
     ulElement.appendChild(commentElement)
 
 
     console.log(inputElement.value)
-    
+
+    inputElement.value = ""    
+})
+
+
+let likeCounter = 0
+
+
+// events
+//                                 (event, callbackFunction)
+likeButtonElement.addEventListener("click",()=>{
+    const likeCountElement = document.querySelector("#like-count")
+    likeCounter+= 1
+    console.log(likeCounter)
+    likeCountElement.textContent = `${likeCounter} Likes on Post`
+
 })
