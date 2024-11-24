@@ -50,6 +50,8 @@ let likeCounter = 0
 // events
 //                                 (event, callbackFunction)
 
+console.log( Number(document.querySelector("#like-count").textContent))
+
 function toggleLike(event){
     console.log(event.target.id)
     const likeCountElement = document.querySelector("#like-count")
@@ -57,7 +59,9 @@ function toggleLike(event){
         likeCounter+=1
     }
     else if(event.target.id === "dislike-button"){
-        likeCounter-=1
+        if(likeCounter >0){
+            likeCounter-=1
+        }
     }
     likeCountElement.textContent = `${likeCounter} Likes on Post`
 
