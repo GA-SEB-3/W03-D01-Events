@@ -49,10 +49,25 @@ let likeCounter = 0
 
 // events
 //                                 (event, callbackFunction)
-likeButtonElement.addEventListener("click",()=>{
+
+function toggleLike(event){
+    console.log(event.target.id)
     const likeCountElement = document.querySelector("#like-count")
-    likeCounter+= 1
-    console.log(likeCounter)
+    if(event.target.id === "like-button"){
+        likeCounter+=1
+    }
+    else if(event.target.id === "dislike-button"){
+        likeCounter-=1
+    }
     likeCountElement.textContent = `${likeCounter} Likes on Post`
 
-})
+}
+
+likeButtonElement.addEventListener("click", toggleLike)
+
+
+const dislikeButtonElement = document.querySelector("#dislike-button")
+
+dislikeButtonElement.addEventListener("click",toggleLike)
+
+// Create a dislike click functionality
